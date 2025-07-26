@@ -1,16 +1,31 @@
+// npm
+import { useState } from "react";
 // styles
 import styles from "./Control.module.css";
 
-export default function Control() {
+export default function Control({ onSend }) {
+  const [content, setContent] = useState("");
+
+  const handleChangeContent = (e) => setContent(e.target.value);
+
+  const handleContentSend = () => {
+    if (content.length > 0) {
+      onSend(content);
+      setContent("");
+    }
+  };
+
   return (
     <div className={styles.Controls}>
       <div className={styles.TextAreaContainer}>
         <textarea
           className={styles.TextArea}
           placeholder="Message AI Chatbot"
+          value={content}
+          onChange={handleChangeContent}
         />
       </div>
-      <button className={styles.Button}>
+      <button className={styles.Button} onClick={handleContentSend}>
         <SendIcon />
       </button>
     </div>

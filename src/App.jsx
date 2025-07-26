@@ -10,7 +10,12 @@ import robot from "./assets/chatbot.png";
 import styles from "./App.module.css";
 
 export default function App() {
-  const [messages, setMessages] = useState(MESSAGES);
+  const [messages, setMessages] = useState([]);
+
+  const handleContentSend = (content) => {
+    setMessages((prevMessages) => [...prevMessages, { content, role: "user" }]);
+    alert(content);
+  };
 
   return (
     <div className={styles.App}>
@@ -21,7 +26,7 @@ export default function App() {
       <div className={styles.ChatContainer}>
         <Chat messages={messages} />
       </div>
-      <Control />
+      <Control onSend={handleContentSend} />
     </div>
   );
 }
