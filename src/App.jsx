@@ -2,6 +2,7 @@
 import { useState } from "react";
 // components
 import Chat from "./components/Chatbot/Chat";
+import Control from "./components/Control/Control";
 // data
 import { MESSAGES } from "./const/Messages";
 import robot from "./assets/chatbot.png";
@@ -20,6 +21,7 @@ export default function App() {
       <div className={styles.ChatContainer}>
         <Chat messages={messages} />
       </div>
+      <Control />
     </div>
   );
 }
