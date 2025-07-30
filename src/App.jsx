@@ -14,7 +14,6 @@ export default function App() {
 
   const handleContentSend = (content) => {
     setMessages((prevMessages) => [...prevMessages, { content, role: "user" }]);
-    alert(content);
   };
 
   return (

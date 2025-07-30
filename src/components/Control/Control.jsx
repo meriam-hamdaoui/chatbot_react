@@ -15,6 +15,13 @@ export default function Control({ onSend }) {
     }
   };
 
+  const handleEnterkeySend = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleContentSend();
+    }
+  };
+
   return (
     <div className={styles.Controls}>
       <div className={styles.TextAreaContainer}>
@@ -23,6 +30,7 @@ export default function Control({ onSend }) {
           placeholder="Message AI Chatbot"
           value={content}
           onChange={handleChangeContent}
+          onKeyDown={handleEnterkeySend}
         />
       </div>
       <button className={styles.Button} onClick={handleContentSend}>
